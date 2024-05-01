@@ -1,86 +1,101 @@
-*{
-    margin: 0;
-    padding: 0;
+@font-face {
+  font-family: "nasalization-rg";
+  src: url("../fonts/nasalization-rg.otf") format("opentype");
+  font-display: auto;
 }
 
-body{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    height: 100vh;
-    /*overflow: hidden; /* careful */
-    background: linear-gradient(#F4C430, #DC0C2C);
-    flex-direction: column;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 95vh;
+  margin: 1em 1em 1em 1em;
+  overflow: hidden;
+  background: linear-gradient(#F4C430, #DC0C2C);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* this did nothing */
+  flex-direction: column;
+  font-family: "nasalization-rg", "Open Sans", "Roboto";
 }
 
 .hidden { display: none; }
 
 .visible { display: block; }
 
-#hello-world{
-    font-size: large;
-    text-align: center;
-    width: fit-content;
-    animation: linear forwards fadeIn 1s;
+#hello-world { /* only displays if javascript turned off */
+  font-size: large;
+  text-align: center;
+  width: fit-content;
+  animation: linear forwards fadeIn 1s;
 }
 
 #typed-text {
-    font-family: 'Bookman Old Style';
-  }
+  font-family: "nasalization-rg";
+  text-align: center;
+}
   
-  #typed-text::after {
-    content: ""; /* Add a pseudo-element after the text */
-    width: 3px; /* Width of the blinking cursor */
-    height: 100%; /* Height of the text */
-    background-color: black; /* Color of the cursor */
-    animation: blink 0.7s steps(1, end) infinite; /* Blinking animation */
-  }
+#typed-text::after {
+  content: ""; /* Add a pseudo-element after the text */
+  width: 0.2em; /* Width of the blinking cursor */
+  height: 100%; /* Height of the text */
+  background-color: black; /* Color of the cursor */
+  animation: blink 0.7s steps(1, end) infinite; /* Blinking animation */
+}
   
-  @keyframes blink {
-    from, to {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
+@keyframes blink {
+  from, to { opacity: 0; }
+  50% { opacity: 1; }
+}
 
-#menu{display: block;}
+.menu{
+  text-align: center;
+  width: inherit;
+  margin: 1em 1em;
+  padding: 1em 1em;
+}
 
 .button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-    animation: linear forwards rise-up 1s;
-    border: 2px solid green;
-  }
-  
-  .button:hover {
-    background-color: #3e8e41;
-  }
-
-  .button:active {
-    background-color: #388e3c;
-    transform: translateY(2px); /* Simulate press by moving down slightly */
-    transition: transform 0.1s ease-in-out; /* Smooth transition effect */
-  }
-
-#logo{
-    margin-top: 80%;
-    margin-left: 70%;
-    width: 190px !important;
-    height: 150px !important;
-    position: absolute;
-    animation: linear forwards fadeIn 1s;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-shadow: darkgreen 2px 2px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 2em;
+  margin: 0.5em 0.5em;
+  cursor: pointer;
+  border-radius: 1em 1em 0.3em 0.3em;
+  animation: linear forwards rise-up 1s;
+  border: 2px solid green;
 }
+  
+.button:hover {
+  background-color: #00ff08;
+}
+
+.button:active {
+  background-color: #388e3c;
+  transform: translateY(2px); /* Simulate press by moving down slightly */
+  transition: transform 0.1s ease-in-out; /* Smooth transition effect */
+}
+
+#logo {
+  width: 10em;
+  height: 8em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  animation: linear forwards fadeIn 1s;
+}
+
 
 @keyframes fadeIn{
     from{
@@ -103,39 +118,87 @@ body{
   }
 
 .blob {
-    position: absolute;
-    opacity: 0.5;
-    width: 400px;
-    aspect-ratio: 1/1;
-    animation: animate-bg 10s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite alternate forwards;
-    filter: blur(40px);
-    z-index: -1;
-    background: linear-gradient(
-        47deg,
-        #940016 21%, /* Deep Red */
-        rgb(255, 102, 0) 67%, /* Orange */
-        #8b0015 81%  /* Deep Red */
-    );
-    box-shadow: inset 50px 50px 17px 0px #ffffff,
+  position: absolute;
+  opacity: 0.5;
+  width: 400px;
+  aspect-ratio: 1/1;
+  animation: animate-bg 10s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite alternate forwards;
+  filter: blur(40px);
+  z-index: -1;
+  background: linear-gradient(
+    45deg,
+    #940016 21%, /* Deep Red */
+    rgb(255, 102, 0) 67%, /* Orange */
+    #8b0015 81%  /* Deep Red */
+  );
+  box-shadow: inset 50px 50px 17px 0px #ffffff,
               inset 100px 100px 17px 0px #66ff00;
+}
+
+@keyframes animate-bg {
+  0% {
+    translate: 40% -25%;
+    border-radius: 60% 40% 30% 70% / 100% 85% 92% 74%;
   }
-  
-  @keyframes animate-bg {
-    0% {
-      translate: 40% -25%;
-      border-radius: 60% 40% 30% 70% / 100% 85% 92% 74%;
-    }
-    50% {
-      translate: 0% 13%;
-      border-radius: 20% 71% 47% 70% / 81% 15% 22% 54%;
-      rotate: 41deg;
-      scale: 1.15;
-    }
-    100% {
-      translate: -45% 39%;
-      border-radius: 100% 75% 92% 74% / 60% 80% 30% 70%;
-      rotate: -60deg;
-      scale: 1.05;
-    }
+  50% {
+    translate: 0% 13%;
+    border-radius: 20% 71% 47% 70% / 81% 15% 22% 54%;
+    rotate: 41deg;
+    scale: 1.15;
   }
-  
+  100% {
+    translate: -45% 39%;
+    border-radius: 100% 75% 92% 74% / 60% 80% 30% 70%;
+    rotate: -60deg;
+    scale: 1.05;
+  }
+}
+
+/* loader start */
+#loader{
+  animation: linear forwards fadeIn 0.5s
+}
+
+.container {
+  --uib-size: 40px;
+  --uib-color: black;
+  --uib-speed: 1.4s;
+  --uib-bg-opacity: .1;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  transform-origin: center;
+  overflow: visible;
+  padding: 1em;
+}
+
+.car {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 15, 85;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: travel var(--uib-speed) linear infinite;
+  will-change: stroke-dasharray, stroke-dashoffset;
+  transition: stroke 0.5s ease;
+}
+
+.track {
+  stroke: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: stroke 0.5s ease;
+}
+
+@keyframes travel {
+  0% { stroke-dashoffset: 0; }
+
+  100% { stroke-dashoffset: -100; }
+}
+/*loader end*/
+
+.screen{
+  text-align: center;
+}
+.screen img{
+  height: 50vh;
+  width: auto;
+}
